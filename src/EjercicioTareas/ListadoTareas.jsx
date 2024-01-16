@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { AgregarTarea } from "./AgregarTarea"
- 
+import { AgregarTarea } from "./AgregarTarea";
+
 const Item = ({ nombre, visto }) => {
   return (
     <li>
@@ -13,14 +13,13 @@ const Item = ({ nombre, visto }) => {
 export default function Home() {
   //const [contador, setContador] = useState (500)
   const addTask = () => {
-    setArreglo([...arreglo, { nombre: 'nuevo', visto: true }]);
-    
+    setArreglo([...arreglo, { nombre: "nuevo", visto: true }]);
   };
   let listado = [
-    { nombre: "Instalaciones Necesarias", visto: true },
-    { nombre: "Hooks", visto: true },
-    { nombre: "Props", visto: true },
-    { nombre: "Componentes", visto: false },
+    { id: 1, nombre: "Instalaciones Necesarias", visto: true },
+    { id: 2, nombre: "Hooks", visto: true },
+    { id: 3, nombre: "Props", visto: true },
+    { id: 4, nombre: "Componentes", visto: false },
   ];
   const [arreglo, setArreglo] = useState(listado);
 
@@ -28,6 +27,16 @@ export default function Home() {
      setContador (contador + 1)
     console.log(num)
   }*/
+
+  const onAgregarTarea = (val) => {
+    if (val < 1) return;
+    const envio = {
+      id: arreglo.length + 1,
+      nombre: val,
+      visto: false,
+    };
+    setArreglo([...arreglo, envio]);
+  };
 
   return (
     <>
@@ -41,18 +50,17 @@ export default function Home() {
 
       <h1>Mapeo</h1>
 
-      <AgregarTarea agregarTarea={setArreglo}></AgregarTarea>
+      <AgregarTarea agregarTarea={onAgregarTarea}></AgregarTarea>
 
       <ol>
         {arreglo.map((item) => (
           <Item
-            key={item.nombre}
+            key={item.id}
             nombre={item.nombre}
             visto={item.visto}
           ></Item>
         ))}
       </ol>
-
 
       {/* <button onClick={() => addTask()}>Agregar Tarea</button> */}
     </>
