@@ -1,19 +1,27 @@
+import { useRef, useEffect } from "react";
 import { useForms } from "../Components/Hooks/useForms";
 
 export const Formulario = () => {
+  const focusRef = useRef();
+
   const initialForm = {
-    usuario: '',
-    email: '',
-    contraseña: '',
+    usuario: "",
+    email: "",
+    contraseña: "",
   };
   const { Formulario, onInputChange } = useForms(initialForm);
 
-  const { usuario, email, contraseña } = Formulario
+  const { usuario, email, contraseña } = Formulario;
 
   const onSubmit = (event) => {
     event.preventDefault();
     console.log(Formulario);
   };
+
+  useEffect(() => {
+    focusRef.current.focus();
+  }, []);
+
   return (
     <form onSubmit={onSubmit}>
       <div className="mb-3">
@@ -21,6 +29,7 @@ export const Formulario = () => {
           Usuario
         </label>
         <input
+          ref={focusRef}
           type="usuario"
           className="form-control"
           name="usuario"
@@ -60,6 +69,4 @@ export const Formulario = () => {
       </button>
     </form>
   );
-}
-
-
+};

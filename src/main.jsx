@@ -2,10 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 // import App from "./App.jsx";
 import  "./index.css"
-import { FetchWithHook } from "./Fetch-useEffect/FetchWithHook.jsx";
+import { Enlace } from "./Enlace.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <FetchWithHook  />
+    <Enlace  />
   </React.StrictMode>
 );
