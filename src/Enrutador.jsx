@@ -1,6 +1,6 @@
 import { ComponentCallBack } from './Components/Callback-Component/ComponentCallBack'
 
-export const Enlace = () => {
+export const Enrutador = () => {
   return (
     <>
     <h1>Titulo</h1>
